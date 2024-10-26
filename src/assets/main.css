@@ -2,3 +2,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-rating {
+  background-color: rgba(35, 31, 32, 0.3);
+}
+
+.list-movie {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.list-movie input:checked ~ .checkmark {
+  background-color: #ef4444;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.list-movie input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.list-movie .checkmark:after {
+  left: 5.5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.custom-select select {
+  appearance: none;
+  padding: 8px 15px;
+  background-color: #2f353e;
+  border: 1px solid #2f353e;
+  border-radius: 0.25rem;
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  content: '';
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid #d1d5db;
+  top: 35%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid #d1d5db;
+  top: 55%;
+}
