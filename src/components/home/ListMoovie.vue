@@ -7,7 +7,10 @@ const store = useMoovieStore()
 const { listMoovie, page, totalPage } = storeToRefs(store)
 
 const more = (page: string) => {
-  store.getMoovie(page)
+  const slug = {
+    page: page,
+  }
+  store.getMoovie(slug)
 }
 </script>
 
@@ -20,7 +23,7 @@ const more = (page: string) => {
         :title="data.title"
         :imgUrl="data.poster_path"
         :year="data.release_date"
-        :rating="Number(data.vote_average.toFixed(1))"
+        :rating="Number(data.vote_average?.toFixed(1))"
       />
     </div>
     <div class="text-center mt-14">

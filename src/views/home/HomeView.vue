@@ -3,11 +3,15 @@ import { onMounted } from 'vue'
 import { useMoovieStore } from '@/stores/moovie'
 import ListMoovie from '@/components/home/ListMoovie.vue'
 import ListMoovieSlider from '@/components/home/ListMoovieSlider.vue'
+import ListFilterSortBy from '@/components/home/ListFilterSortBy.vue'
 
 const store = useMoovieStore()
 
 onMounted(async () => {
-  store.getMoovie('1')
+  const slug = {
+    page: 1,
+  }
+  store.getMoovie(slug)
 })
 </script>
 
@@ -40,17 +44,7 @@ onMounted(async () => {
             </div>
 
             <div class="px-3 border-b border-solid border-gray-600 pb-5 mb-2.5">
-              <div class="custom-select relative">
-                <select class="text-[#d1d5db] w-full cursor-pointer">
-                  <option value="0">Popularity</option>
-                  <option value="1">Popularity Ascending</option>
-                  <option value="2">Popularity Descending</option>
-                  <option value="3">Popularity Date Ascending</option>
-                  <option value="4">Popularity Date Descending</option>
-                  <option value="5">Rating Ascending</option>
-                  <option value="6">Rating Descending</option>
-                </select>
-              </div>
+              <ListFilterSortBy />
             </div>
 
             <div class="px-3 border-b border-solid border-gray-600 pb-3">
