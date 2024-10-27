@@ -4,6 +4,7 @@ import { useMoovieStore } from '@/stores/moovie'
 import ListMoovie from '@/components/home/ListMoovie.vue'
 import ListMoovieSlider from '@/components/home/ListMoovieSlider.vue'
 import ListFilterSortBy from '@/components/home/ListFilterSortBy.vue'
+import ListGenres from '@/components/home/ListGenres.vue'
 
 const store = useMoovieStore()
 
@@ -12,6 +13,7 @@ onMounted(async () => {
     page: 1,
   }
   store.getMoovie(slug)
+  store.getGenres()
 })
 </script>
 
@@ -50,174 +52,7 @@ onMounted(async () => {
             <div class="px-3 border-b border-solid border-gray-600 pb-3">
               <span class="font-medium text-lg pl-1">Genres</span>
             </div>
-
-            <ul class="px-3 mt-3">
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Actions
-                  <input
-                    type="checkbox"
-                    name="option1"
-                    value="actions"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Adventure
-                  <input
-                    type="checkbox"
-                    name="option2"
-                    value="adventure"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Animation
-                  <input
-                    type="checkbox"
-                    name="option3"
-                    value="animation"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Comedy
-                  <input
-                    type="checkbox"
-                    name="option4"
-                    value="comedy"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Crime
-                  <input
-                    type="checkbox"
-                    name="option5"
-                    value="crime"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Documentary
-                  <input
-                    type="checkbox"
-                    name="option6"
-                    value="documentary"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Drama
-                  <input
-                    type="checkbox"
-                    name="option7"
-                    value="drama"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Family
-                  <input
-                    type="checkbox"
-                    name="option8"
-                    value="family"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Fantasy
-                  <input
-                    type="checkbox"
-                    name="option9"
-                    value="fantasy"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >History
-                  <input
-                    type="checkbox"
-                    name="option10"
-                    value="history"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-              <li>
-                <label
-                  class="list-movie block relative cursor-pointer hover:bg-[#2e353e] rounded-md p-2 text-gray-300"
-                  >Horror
-                  <input
-                    type="checkbox"
-                    name="option11"
-                    value="horror"
-                    class="absolute opacity-0 cursor-pointer h-0 w-0"
-                  />
-                  <span
-                    class="checkmark bg-[#2e353e] absolute top-2.5 right-2 h-[18px] w-[18px] border-2 border-solid border-gray-600 rounded"
-                  ></span>
-                </label>
-              </li>
-            </ul>
+            <ListGenres />
           </div>
         </div>
 

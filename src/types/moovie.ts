@@ -6,3 +6,8 @@ export interface Moovies {
   page: number
   total_pages: any
 }
+
+export interface Genres {
+  id: number
+  name: string
+}
