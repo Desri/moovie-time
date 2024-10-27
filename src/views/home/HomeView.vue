@@ -7,14 +7,7 @@ import ListMoovieSlider from '@/components/home/ListMoovieSlider.vue'
 const store = useMoovieStore()
 
 onMounted(async () => {
-  store
-    .getMoovie('1')
-    .then((res: any) => {
-      console.log('Check data from component', res)
-    })
-    .catch((err: string) => {
-      console.log('error', err)
-    })
+  store.getMoovie('1')
 })
 </script>
 

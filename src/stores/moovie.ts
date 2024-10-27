@@ -4,7 +4,7 @@ import type { Moovies } from '@/types/moovie'
 export const useMoovieStore = defineStore('moovie', {
   state: () => ({
     runtimeConfig: import.meta.env,
-    listMoovie: <Moovies>[],
+    listMoovie: [] as Moovies[],
     page: '',
     totalPage: '',
   }),
