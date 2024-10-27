@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { formatDate } from '@/@core/utils/formatters'
 import { RouterLink } from 'vue-router'
 defineProps<{
   title: string
+  imgUrl: string
   year: string
-  rating: string
+  rating: number
 }>()
 </script>
 
@@ -17,7 +19,7 @@ defineProps<{
         </div>
         <div class="mt-2.5">
           <h2>{{ title }}</h2>
-          <p class="text-[#929292]">{{ year }}</p>
+          <p class="text-[#929292]">{{ formatDate(year) }}</p>
         </div>
       </RouterLink>
     </div>

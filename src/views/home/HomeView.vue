@@ -1,19 +1,38 @@
 <script setup lang="ts">
-import CardMovie from '@/components/card/CardMovie.vue'
+import { onMounted } from 'vue'
+import { useMoovieStore } from '@/stores/moovie'
+import ListMoovie from '@/components/home/ListMoovie.vue'
+import ListMoovieSlider from '@/components/home/ListMoovieSlider.vue'
+
+const store = useMoovieStore()
+
+onMounted(async () => {
+  store
+    .getMoovie('1')
+    .then((res: any) => {
+      console.log('Check data from component', res)
+    })
+    .catch((err: string) => {
+      console.log('error', err)
+    })
+})
 </script>
 
 <template>
-  <main class="bg-[#292e35]">
-    <div class="w-4/5 mx-auto py-16">
+  <main class="bg-[#1e232a]">
+    <ListMoovieSlider />
+    <div class="sm:w-4/5 mx-auto py-16 px-3.5 sm:px-0">
       <div class="flex justify-between items-center mb-12">
         <div>
           <div class="bg-red-500 h-1.5 w-24 mb-2.5"></div>
-          <h2 class="text-2xl font-medium text-gray-300">Discover Movies</h2>
+          <h2 class="text-xl sm:text-2xl font-medium text-gray-300">
+            Discover Movies
+          </h2>
         </div>
         <div>
-          <div class="flex items-center">
+          <div class="flex items-center mt-5 sm:mt-0">
             <p>My Movies</p>
-            <div class="bg-[#21252a] rounded-2xl px-3.5 py-1 ml-2.5">
+            <div class="bg-[#181818] rounded-2xl px-3.5 py-1 ml-2.5">
               2 <span class="text-sm">movies</span>
             </div>
           </div>
@@ -214,32 +233,9 @@ import CardMovie from '@/components/card/CardMovie.vue'
             </ul>
           </div>
         </div>
+
         <div class="md:w-3/4">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-            <CardMovie
-              :title="'Wonder Woman 1984'"
-              :year="'2020'"
-              :rating="'7.0'"
-            />
-            <CardMovie :title="'Below Zero'" :year="'2021'" :rating="'6.4'" />
-            <CardMovie
-              :title="'The Little Things'"
-              :year="'2021'"
-              :rating="'6.3'"
-            />
-            <CardMovie
-              :title="'Outside the Wire'"
-              :year="'2020'"
-              :rating="'6.5'"
-            />
-          </div>
-          <div class="text-center mt-14">
-            <button
-              class="bg-[#ff0000] text-white rounded-3xl tracking-wider font-medium px-8 py-2"
-            >
-              Load More
-            </button>
-          </div>
+          <ListMoovie />
         </div>
       </div>
     </div>

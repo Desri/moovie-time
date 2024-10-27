@@ -2,7 +2,9 @@
 
 <template>
   <footer class="bg-[#15191e] py-4">
-    <div class="w-4/5 mx-auto flex justify-between items-center">
+    <div
+      class="sm:w-4/5 mx-auto flex justify-between items-center px-3.5 sm:px-0"
+    >
       <div>
         <span>© 2021 MoovieTime. All Rights Reserved.</span>
       </div>

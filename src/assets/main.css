@@ -70,3 +70,187 @@
   border-top: var(--size) solid #d1d5db;
   top: 55%;
 }
+
+.box-carousel input {
+  display: none;
+}
+
+.box-carousel .inner {
+  width: 500%;
+}
+
+/*---- SET UP CONTROL ----*/
+.slider-prev-next-control {
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.slider-prev-next-control label {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.7;
+}
+.slider-prev-next-control label:hover {
+  opacity: 1;
+}
+
+.slider-dot-control label {
+  cursor: pointer;
+  border-radius: 5px;
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin: 0px 7px;
+  background: #bbb;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.slider-dot-control label:hover {
+  background: #ccc;
+  border-color: #777;
+}
+
+/* Info Box */
+.info {
+  -webkit-transition: all 1000ms ease-out 600ms;
+  -moz-transition: all 1000ms ease-out 600ms;
+  transition: all 1000ms ease-out 600ms;
+}
+.info h3 {
+  color: #fcfff4;
+  margin: 0 0 5px;
+  font-weight: normal;
+  font-size: 1.5em;
+  font-style: normal;
+}
+
+/* Slider Styling */
+.slider-wrapper {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 500ms ease-out;
+  -moz-transition: all 500ms ease-out;
+  transition: all 500ms ease-out;
+}
+.slider-wrapper .inner {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
+  -moz-transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/*---- SET POSITION FOR SLIDE ----*/
+#slide1:checked ~ .slider-prev-next-control label:nth-child(5)::after,
+#slide5:checked ~ .slider-prev-next-control label:nth-child(4)::after,
+#slide4:checked ~ .slider-prev-next-control label:nth-child(3)::after,
+#slide3:checked ~ .slider-prev-next-control label:nth-child(2)::after,
+#slide2:checked ~ .slider-prev-next-control label:nth-child(1)::after,
+#slide5:checked ~ .slider-prev-next-control label:nth-child(1)::after,
+#slide4:checked ~ .slider-prev-next-control label:nth-child(5)::after,
+#slide3:checked ~ .slider-prev-next-control label:nth-child(4)::after,
+#slide2:checked ~ .slider-prev-next-control label:nth-child(3)::after,
+#slide1:checked ~ .slider-prev-next-control label:nth-child(2)::after {
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  margin: 0;
+  line-height: 38px;
+  font-size: 3em;
+  display: block;
+  color: #777;
+}
+
+#slide5:checked ~ .slider-prev-next-control label:nth-child(1)::after,
+#slide4:checked ~ .slider-prev-next-control label:nth-child(5)::after,
+#slide3:checked ~ .slider-prev-next-control label:nth-child(4)::after,
+#slide2:checked ~ .slider-prev-next-control label:nth-child(3)::after,
+#slide1:checked ~ .slider-prev-next-control label:nth-child(2)::after {
+  content: '';
+  padding-left: 15px;
+}
+
+#slide5:checked ~ .slider-prev-next-control label:nth-child(1),
+#slide4:checked ~ .slider-prev-next-control label:nth-child(5),
+#slide3:checked ~ .slider-prev-next-control label:nth-child(4),
+#slide2:checked ~ .slider-prev-next-control label:nth-child(3),
+#slide1:checked ~ .slider-prev-next-control label:nth-child(2) {
+  display: block;
+  float: right;
+  margin-right: 5px;
+}
+
+#slide1:checked ~ .slider-prev-next-control label:nth-child(5),
+#slide5:checked ~ .slider-prev-next-control label:nth-child(4),
+#slide4:checked ~ .slider-prev-next-control label:nth-child(3),
+#slide3:checked ~ .slider-prev-next-control label:nth-child(2),
+#slide2:checked ~ .slider-prev-next-control label:nth-child(1) {
+  display: block;
+  float: left;
+  margin-left: 5px;
+}
+
+#slide1:checked ~ .slider-prev-next-control label:nth-child(5)::after,
+#slide5:checked ~ .slider-prev-next-control label:nth-child(4)::after,
+#slide4:checked ~ .slider-prev-next-control label:nth-child(3)::after,
+#slide3:checked ~ .slider-prev-next-control label:nth-child(2)::after,
+#slide2:checked ~ .slider-prev-next-control label:nth-child(1)::after {
+  content: '';
+  padding-left: 8px;
+}
+
+#slide5:checked ~ .slider-dot-control label:nth-child(5),
+#slide4:checked ~ .slider-dot-control label:nth-child(4),
+#slide3:checked ~ .slider-dot-control label:nth-child(3),
+#slide2:checked ~ .slider-dot-control label:nth-child(2),
+#slide1:checked ~ .slider-dot-control label:nth-child(1) {
+  background: #ef4444;
+}
+
+#slide5:checked ~ .slider-wrapper article:nth-child(5) .info,
+#slide4:checked ~ .slider-wrapper article:nth-child(4) .info,
+#slide3:checked ~ .slider-wrapper article:nth-child(3) .info,
+#slide2:checked ~ .slider-wrapper article:nth-child(2) .info,
+#slide1:checked ~ .slider-wrapper article:nth-child(1) .info {
+  opacity: 1;
+}
+
+#slide1:checked ~ .slider-wrapper .inner {
+  margin-left: 0%;
+}
+#slide2:checked ~ .slider-wrapper .inner {
+  margin-left: -40%;
+}
+#slide3:checked ~ .slider-wrapper .inner {
+  margin-left: -90%;
+}
+#slide4:checked ~ .slider-wrapper .inner {
+  margin-left: -140%;
+}
+#slide5:checked ~ .slider-wrapper .inner {
+  margin-left: -190%;
+}
+
+/*---- MOBILE----*/
+@media only screen and (max-width: 450px) {
+  .slider-wrapper .info {
+    opacity: 0;
+  }
+}

@@ -12,7 +12,7 @@ const toggle = () => {
 </script>
 
 <template>
-  <header class="bg-gray-800 py-4">
+  <header class="bg-gray-800 py-4 sticky top-0 z-20">
     <div class="w-4/5 mx-auto flex flex-wrap items-center">
       <div
         class="flex flex-shrink md:w-1/6 justify-center md:justify-start text-white"
