@@ -20,6 +20,7 @@ const more = (page: string) => {
       <CardMovie
         v-for="(data, index) in listMoovie"
         :key="index"
+        :idMoovie="data.id"
         :title="data.title"
         :imgUrl="data.poster_path"
         :year="data.release_date"

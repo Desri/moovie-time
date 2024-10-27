@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { Moovies, Genres } from '@/types/moovie'
+import type { Moovies, Genres, Detail } from '@/types/moovie'
 
 export const useMoovieStore = defineStore('moovie', {
   state: () => ({
@@ -9,6 +9,8 @@ export const useMoovieStore = defineStore('moovie', {
     totalPage: '',
     sort_by: '',
     listGenres: [] as Genres[],
+    listReccomendation: [] as Moovies[],
+    detailMoovie: {} as Detail,
   }),
   actions: {
     async getMoovie(data: any) {
@@ -55,6 +57,44 @@ export const useMoovieStore = defineStore('moovie', {
         )
         const result = await response.json()
         this.listGenres = result.genres
+      } catch (error) {
+        console.log('ERROR')
+      }
+    },
+
+    async getReccomendation(slug: string) {
+      try {
+        const response = await fetch(
+          `${this.runtimeConfig.VITE_BASE_API_URL}/movie/${slug}/recommendations?language=en&page=1`,
+          {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${this.runtimeConfig.VITE_BASE_API_TOKEN}`,
+            },
+          },
+        )
+        const result = await response.json()
+        this.listReccomendation = result.results
+      } catch (error) {
+        console.log('ERROR')
+      }
+    },
+
+    async getDetailMoovie(slug: string) {
+      try {
+        const response = await fetch(
+          `${this.runtimeConfig.VITE_BASE_API_URL}/movie/${slug}?language=en-US`,
+          {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${this.runtimeConfig.VITE_BASE_API_TOKEN}`,
+            },
+          },
+        )
+        const result = await response.json()
+        this.detailMoovie = result
       } catch (error) {
         console.log('ERROR')
       }
