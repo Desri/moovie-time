@@ -4,10 +4,11 @@ import { useMoovieStore } from '@/stores/moovie'
 import { storeToRefs } from 'pinia'
 
 const store = useMoovieStore()
-const { listMoovie, page, totalPage } = storeToRefs(store)
+const { listMoovie, page, totalPage, genres } = storeToRefs(store)
 
 const more = (page: string) => {
   const slug = {
+    genres: genres,
     page: page,
   }
   store.getMoovie(slug)
@@ -27,7 +28,13 @@ const more = (page: string) => {
         :rating="Number(data.vote_average?.toFixed(1))"
       />
     </div>
-    <div class="text-center mt-14">
+    <div
+      v-if="listMoovie.length === 0"
+      class="text-center my-24 text-xl font-medium text-gray-300"
+    >
+      No Data Found
+    </div>
+    <div v-if="listMoovie.length > 0" class="text-center mt-14">
       <button
         class="rounded-3xl tracking-wider font-medium px-8 py-2"
         :class="

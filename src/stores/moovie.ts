@@ -8,6 +8,7 @@ export const useMoovieStore = defineStore('moovie', {
     page: '',
     totalPage: '',
     sort_by: '',
+    genres: '',
     listGenres: [] as Genres[],
     listReccomendation: [] as Moovies[],
     detailMoovie: {} as Detail,
@@ -15,12 +16,16 @@ export const useMoovieStore = defineStore('moovie', {
   actions: {
     async getMoovie(data: any) {
       try {
+        this.genres = data.genres
+        if (data.genres !== undefined) {
+          this.genres = data.genres
+        }
         if (data.sort_by !== undefined) {
           this.page = '1'
           this.sort_by = data.sort_by
         }
         const response = await fetch(
-          `${this.runtimeConfig.VITE_BASE_API_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=${data.page}&sort_by=${this.sort_by}`,
+          `${this.runtimeConfig.VITE_BASE_API_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=${data.page}&sort_by=${this.sort_by}${this.genres ? `&with_genres=${this.genres}` : ''}`,
           {
             method: 'GET',
             headers: {

@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useMoovieStore } from '@/stores/moovie'
 const store = useMoovieStore()
 
+const { genres } = storeToRefs(store)
 const sort_by = ref('0')
 const onChange = () => {
   const slug = {
     sort_by: sort_by.value,
+    genres: genres,
     page: 1,
   }
   store.getMoovie(slug)
