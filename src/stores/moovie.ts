@@ -145,6 +145,7 @@ export const useMoovieStore = defineStore('moovie', {
         console.log('ERROR')
       }
     },
+
     async postWatchList(payload: any) {
       try {
         console.log('dddd', payload)
@@ -168,6 +169,7 @@ export const useMoovieStore = defineStore('moovie', {
         console.log('ERROR')
       }
     },
+
     async getWatchlistMovies() {
       try {
         const response = await fetch(
@@ -182,6 +184,24 @@ export const useMoovieStore = defineStore('moovie', {
         )
         const result = await response.json()
         this.watchlistMovies = result.results
+      } catch (error) {
+        console.log('ERROR')
+      }
+    },
+
+    async getSuggestion(payload: string) {
+      try {
+        const response = await fetch(
+          `${this.runtimeConfig.VITE_BASE_API_URL}/search/movie?query=${payload}&include_adult=false&language=en-US&page=1`,
+          {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${this.runtimeConfig.VITE_BASE_API_TOKEN}`,
+            },
+          },
+        )
+        return response.json()
       } catch (error) {
         console.log('ERROR')
       }
