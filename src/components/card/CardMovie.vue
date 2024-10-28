@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useMoovieStore } from '@/stores/moovie'
 import { formatDate } from '@/@core/utils/formatters'
 import { RouterLink } from 'vue-router'
 import IconStar from '../icons/IconStar.vue'
@@ -9,6 +10,17 @@ defineProps<{
   year: string
   rating: number
 }>()
+
+const store = useMoovieStore()
+
+const addToWatchlist = (id: number) => {
+  const payload = {
+    media_type: 'movie',
+    media_id: id,
+    watchlist: true,
+  }
+  store.postWatchList(payload)
+}
 </script>
 
 <template>
@@ -36,7 +48,10 @@ defineProps<{
                 class="w-28 mb-3 bg-[#ff0000] rounded-2xl py-1"
                 >VIEW</RouterLink
               >
-              <button class="w-28 rounded-2xl py-1 border-2 border-solid">
+              <button
+                class="w-28 rounded-2xl py-1 border-2 border-solid"
+                @click="addToWatchlist(idMoovie)"
+              >
                 ADD
               </button>
             </div>

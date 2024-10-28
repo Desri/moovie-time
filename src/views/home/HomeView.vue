@@ -5,6 +5,7 @@ import ListMoovie from '@/components/home/ListMoovie.vue'
 import ListMoovieSlider from '@/components/home/ListMoovieSlider.vue'
 import ListFilterSortBy from '@/components/home/ListFilterSortBy.vue'
 import ListGenres from '@/components/home/ListGenres.vue'
+import HeadingHome from '@/components/home/HeadingHome.vue'
 
 const store = useMoovieStore()
 
@@ -15,6 +16,7 @@ onMounted(async () => {
   store.getMoovie(slug)
   store.getGenres()
   store.getTrending()
+  store.getWatchlistMovies()
 })
 </script>
 
@@ -22,22 +24,7 @@ onMounted(async () => {
   <main class="bg-[#1e232a]">
     <ListMoovieSlider />
     <div class="sm:w-4/5 mx-auto py-16 px-3.5 sm:px-0">
-      <div class="flex justify-between items-center mb-12">
-        <div>
-          <div class="bg-red-500 h-1.5 w-24 mb-2.5"></div>
-          <h2 class="text-xl sm:text-2xl font-medium text-gray-300">
-            Discover Movies
-          </h2>
-        </div>
-        <div>
-          <div class="flex items-center mt-5 sm:mt-0">
-            <p>My Movies</p>
-            <div class="bg-[#181818] rounded-2xl px-3.5 py-1 ml-2.5">
-              2 <span class="text-sm">movies</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <HeadingHome />
       <div class="md:flex gap-8">
         <div class="md:w-1/4">
           <div class="bg-[#151c26] py-5 rounded-lg">

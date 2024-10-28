@@ -17,7 +17,7 @@ setInterval(function () {
   if (counter.value > 4) {
     counter.value = 1
   }
-}, 894000)
+}, 4000)
 </script>
 
 <template>

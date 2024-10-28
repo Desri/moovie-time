@@ -14,6 +14,7 @@ export const useMoovieStore = defineStore('moovie', {
     detailMoovie: {} as Detail,
     listReview: [] as Review[],
     listTrending: [] as Moovies[],
+    watchlistMovies: [] as Moovies[],
   }),
   actions: {
     async getMoovie(data: any) {
@@ -121,7 +122,6 @@ export const useMoovieStore = defineStore('moovie', {
         )
         const result = await response.json()
         this.listReview = result.results
-        console.log('Check Review', result)
       } catch (error) {
         console.log('ERROR')
       }
@@ -141,7 +141,47 @@ export const useMoovieStore = defineStore('moovie', {
         )
         const result = await response.json()
         this.listTrending = result.results
-        console.log('Check Review', result)
+      } catch (error) {
+        console.log('ERROR')
+      }
+    },
+    async postWatchList(payload: any) {
+      try {
+        console.log('dddd', payload)
+        const response = await fetch(
+          `${this.runtimeConfig.VITE_BASE_API_URL}/account/21594197/watchlist`,
+          {
+            method: 'POST',
+            headers: {
+              accept: 'application/json',
+              'content-type': 'application/json',
+              Authorization: `Bearer ${this.runtimeConfig.VITE_BASE_API_TOKEN}`,
+            },
+            body: JSON.stringify(payload),
+          },
+        )
+        const result = await response.json()
+        if (result.success) {
+          this.getWatchlistMovies()
+        }
+      } catch (error) {
+        console.log('ERROR')
+      }
+    },
+    async getWatchlistMovies() {
+      try {
+        const response = await fetch(
+          `${this.runtimeConfig.VITE_BASE_API_URL}/account/21594197/watchlist/movies?language=en-US&page=1&sort_by=created_at.asc`,
+          {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${this.runtimeConfig.VITE_BASE_API_TOKEN}`,
+            },
+          },
+        )
+        const result = await response.json()
+        this.watchlistMovies = result.results
       } catch (error) {
         console.log('ERROR')
       }
