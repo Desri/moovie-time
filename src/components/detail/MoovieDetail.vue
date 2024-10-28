@@ -4,6 +4,7 @@ import MoovieRecommendation from './MoovieRecommendation.vue'
 import { useMoovieStore } from '@/stores/moovie'
 import { storeToRefs } from 'pinia'
 import MoovieReview from './MoovieReview.vue'
+import IconStar from '../icons/IconStar.vue'
 
 const store = useMoovieStore()
 const { detailMoovie } = storeToRefs(store)
@@ -30,19 +31,21 @@ const { detailMoovie } = storeToRefs(store)
             </p>
             <p class="text-gray-600">Fantasy, Action, Adventure</p>
             <div class="flex items-center mt-4">
-              <span class="text-yellow-500 text-2xl">
-                <i class="fas fa-star"> </i>
+              <span class="text-yellow-500 text-3xl font-medium flex gap-2">
+                <IconStar class="w-5" />
                 {{
                   detailMoovie.vote_average
                     ? Number(detailMoovie.vote_average?.toFixed(1))
                     : '0'
                 }}
               </span>
-              <span class="ml-2 text-gray-600"> USER SCORE </span>
-              <span class="ml-2 text-gray-600">
-                {{ detailMoovie.vote_count ? detailMoovie.vote_count : '0' }}
-                VOTES
-              </span>
+              <div class="ml-3.5">
+                <p class="text-gray-600">USER SCORE</p>
+                <span class="text-gray-600">
+                  {{ detailMoovie.vote_count ? detailMoovie.vote_count : '0' }}
+                  VOTES
+                </span>
+              </div>
             </div>
             <div class="sm:flex items-center mt-4 sm:space-x-4">
               <div>
@@ -69,11 +72,10 @@ const { detailMoovie } = storeToRefs(store)
               <div>
                 <p class="text-gray-600">PRODUCTION</p>
                 <p
-                  v-for="(item, index) in detailMoovie.production_companies"
-                  :key="index"
+                  v-if="detailMoovie.production_companies"
                   class="font-bold text-black"
                 >
-                  {{ item.name }}
+                  {{ detailMoovie.production_companies[0].name }}
                 </p>
               </div>
             </div>

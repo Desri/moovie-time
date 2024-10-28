@@ -14,6 +14,7 @@ onMounted(async () => {
   }
   store.getMoovie(slug)
   store.getGenres()
+  store.getTrending()
 })
 </script>
 
@@ -37,25 +38,21 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-
       <div class="md:flex gap-8">
         <div class="md:w-1/4">
           <div class="bg-[#151c26] py-5 rounded-lg">
             <div class="px-3 border-b border-solid border-gray-600 pb-2.5 mb-5">
               <span class="font-medium text-lg pl-1">Sort Result By</span>
             </div>
-
             <div class="px-3 border-b border-solid border-gray-600 pb-5 mb-2.5">
               <ListFilterSortBy />
             </div>
-
             <div class="px-3 border-b border-solid border-gray-600 pb-3">
               <span class="font-medium text-lg pl-1">Genres</span>
             </div>
             <ListGenres />
           </div>
         </div>
-
         <div class="md:w-3/4">
           <ListMoovie />
         </div>

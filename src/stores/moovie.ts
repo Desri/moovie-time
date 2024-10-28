@@ -13,6 +13,7 @@ export const useMoovieStore = defineStore('moovie', {
     listReccomendation: [] as Moovies[],
     detailMoovie: {} as Detail,
     listReview: [] as Review[],
+    listTrending: [] as Moovies[],
   }),
   actions: {
     async getMoovie(data: any) {
@@ -120,6 +121,26 @@ export const useMoovieStore = defineStore('moovie', {
         )
         const result = await response.json()
         this.listReview = result.results
+        console.log('Check Review', result)
+      } catch (error) {
+        console.log('ERROR')
+      }
+    },
+
+    async getTrending() {
+      try {
+        const response = await fetch(
+          `${this.runtimeConfig.VITE_BASE_API_URL}/trending/movie/day?language=en-US`,
+          {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${this.runtimeConfig.VITE_BASE_API_TOKEN}`,
+            },
+          },
+        )
+        const result = await response.json()
+        this.listTrending = result.results
         console.log('Check Review', result)
       } catch (error) {
         console.log('ERROR')

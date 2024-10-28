@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { formatDate } from '@/@core/utils/formatters'
 import { RouterLink } from 'vue-router'
+import IconStar from '../icons/IconStar.vue'
 defineProps<{
   idMoovie: number
   title: string
@@ -22,7 +23,10 @@ defineProps<{
           class="absolute z-10 h-full w-full top-0 bg-[#2e2e2e] text-center card-hover hidden"
         >
           <div class="absolute inset-y-1/4 w-full">
-            <div class="font-medium mb-7 text-2xl">
+            <div
+              class="inline-flex items-center gap-1.5 font-medium mb-7 text-2xl"
+            >
+              <IconStar class="w-5" />
               {{ rating ? rating : 0 }}
             </div>
             <div class="font-medium mb-6 text-lg">Action</div>

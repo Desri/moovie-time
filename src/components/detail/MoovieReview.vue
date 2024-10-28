@@ -2,6 +2,7 @@
 import { formatDateFull } from '@/@core/utils/formatters'
 import { useMoovieStore } from '@/stores/moovie'
 import { storeToRefs } from 'pinia'
+import IconStar from '../icons/IconStar.vue'
 
 const store = useMoovieStore()
 const { listReview } = storeToRefs(store)
@@ -13,7 +14,7 @@ const { listReview } = storeToRefs(store)
       <h2 class="text-lg font-bold text-red-600">REVIEWS</h2>
       <div class="grid sm:grid-cols-2 sm:gap-11 mt-3 sm:mt-4 space-y-4">
         <div
-          v-for="(data, index) in listReview"
+          v-for="(data, index) in listReview.slice(0, 8)"
           :key="index"
           class="bg-white p-4 rounded-xl shadow-lg sm:flex"
         >
@@ -32,9 +33,12 @@ const { listReview } = storeToRefs(store)
                 v-if="data.author_details.rating"
                 class="bg-[#eaeaea] px-3.5 py-1 rounded-lg"
               >
-                <span class="text-xl sm:text-3xl text-black font-medium">
-                  {{ Number(data.author_details.rating?.toFixed(1)) }}
-                </span>
+                <div class="flex gap-1.5">
+                  <IconStar class="w-3 top-[-7px] relative" />
+                  <span class="text-xl sm:text-3xl text-black font-medium">
+                    {{ Number(data.author_details.rating?.toFixed(1)) }}
+                  </span>
+                </div>
               </div>
             </div>
             <p
