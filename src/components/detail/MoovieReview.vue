@@ -10,7 +10,7 @@ const { listReview } = storeToRefs(store)
 
 <template>
   <div>
-    <div class="mt-8">
+    <div class="sm:w-4/5 mx-auto mt-8">
       <h2 class="text-lg font-bold text-red-600">REVIEWS</h2>
       <div class="grid sm:grid-cols-2 sm:gap-11 mt-3 sm:mt-4 space-y-4">
         <div
