@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useMoovieStore } from '@/stores/moovie'
+const store = useMoovieStore()
+
+const { listGenres } = storeToRefs(store)
 
 const toggle = () => {
   let usersubfunctions = document.querySelector('#usersubfunctions')
@@ -69,102 +74,14 @@ const toggle = () => {
             <ul
               id="usersubfunctions"
               ref="usersubfunctions"
-              class="p-2 z-10 top-8 absolute bg-[#151c26] w-[126px] rounded-lg hidden"
+              class="p-2 z-10 top-8 absolute bg-[#151c26] w-[135px] rounded-lg hidden"
             >
-              <li>
+              <li v-for="(data, index) in listGenres" :key="index">
                 <RouterLink
-                  to="/"
+                  :to="`/category/${data.id}`"
                   class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
                 >
-                  Action
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Adventure
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Animation
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Comedy
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Crime
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Crime
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Documentary
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Drama
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Family
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Fantasy
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  History
-                </RouterLink>
-              </li>
-              <li>
-                <RouterLink
-                  to="/"
-                  class="hover:bg-[#2e353e] px-1.5 py-1 rounded-lg text-gray-300 block"
-                >
-                  Horror
+                  {{ data.name }}
                 </RouterLink>
               </li>
             </ul>
