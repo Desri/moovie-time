@@ -22,6 +22,12 @@ const { listReccomendation } = storeToRefs(store)
           :rating="Number(data.vote_average?.toFixed(1))"
         />
       </div>
+      <div
+        v-if="listReccomendation.length === 0"
+        class="text-center my-24 text-xl font-medium text-gray-300"
+      >
+        No Recommendation Found
+      </div>
     </div>
   </div>
 </template>

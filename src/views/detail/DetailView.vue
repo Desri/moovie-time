@@ -10,6 +10,7 @@ const moovieId = ref(route.params.id as string)
 
 onMounted(async () => {
   store.getDetailMoovie(moovieId.value)
+  store.getReview(moovieId.value)
   store.getReccomendation(moovieId.value)
 })
 </script>

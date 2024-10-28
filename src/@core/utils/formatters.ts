@@ -17,3 +17,16 @@ export const formatDate = (
 
   return new Intl.DateTimeFormat('en-US', formatting).format(new Date(value))
 }
+
+export const formatDateFull = (
+  value: string,
+  formatting: Intl.DateTimeFormatOptions = {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  },
+) => {
+  if (!value) return value
+
+  return new Intl.DateTimeFormat('en-US', formatting).format(new Date(value))
+}

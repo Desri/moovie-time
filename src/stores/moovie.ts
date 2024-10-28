@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { Moovies, Genres, Detail } from '@/types/moovie'
+import type { Moovies, Genres, Detail, Review } from '@/types/moovie'
 
 export const useMoovieStore = defineStore('moovie', {
   state: () => ({
@@ -12,6 +12,7 @@ export const useMoovieStore = defineStore('moovie', {
     listGenres: [] as Genres[],
     listReccomendation: [] as Moovies[],
     detailMoovie: {} as Detail,
+    listReview: [] as Review[],
   }),
   actions: {
     async getMoovie(data: any) {
@@ -100,6 +101,26 @@ export const useMoovieStore = defineStore('moovie', {
         )
         const result = await response.json()
         this.detailMoovie = result
+      } catch (error) {
+        console.log('ERROR')
+      }
+    },
+
+    async getReview(slug: string) {
+      try {
+        const response = await fetch(
+          `${this.runtimeConfig.VITE_BASE_API_URL}/movie/${slug}/reviews?language=en-US&page=1`,
+          {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${this.runtimeConfig.VITE_BASE_API_TOKEN}`,
+            },
+          },
+        )
+        const result = await response.json()
+        this.listReview = result.results
+        console.log('Check Review', result)
       } catch (error) {
         console.log('ERROR')
       }

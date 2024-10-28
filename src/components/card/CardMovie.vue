@@ -14,7 +14,10 @@ defineProps<{
   <div>
     <div class="relative card-movie">
       <div class="relative">
-        <img src="@/assets/img/movie-1.png" :alt="title" />
+        <img
+          :src="`https://media.themoviedb.org/t/p/w220_and_h330_face${imgUrl}`"
+          :alt="title"
+        />
         <div
           class="absolute z-10 h-full w-full top-0 bg-[#2e2e2e] text-center card-hover hidden"
         >
